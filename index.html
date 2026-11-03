@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krish Pal | Web & AI Integration Developer Portfolio</title>
+    <title>Krish Pal | Web Developer Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -11,88 +11,77 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            cyan: '#00f2fe',
-                            blue: '#4facfe',
-                            accent: '#6366f1',
-                            darkBg: '#090d16',
-                            cardBg: '#111827',
-                            border: 'rgba(255, 255, 255, 0.08)'
-                        }
+                        darkBg: '#080c14',
+                        cardBg: 'rgba(15, 23, 42, 0.75)',
+                        cyanAccent: '#00f2fe',
+                        blueAccent: '#4facfe',
                     },
                     animation: {
-                        'pulse-glow': 'pulseGlow 3s infinite alternate',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        pulseGlow: {
-                            '0%': { boxShadow: '0 0 15px rgba(0, 242, 254, 0.2)' },
-                            '100%': { boxShadow: '0 0 35px rgba(0, 242, 254, 0.6)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
+
     <style>
         body {
-            background-color: #070a12;
-            color: #f3f4f6;
+            background-color: #080c14;
+            color: #e2e8f0;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
         }
-        .glass-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .glass-card-hover {
+
+        .glass-panel-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glass-card-hover:hover {
-            transform: translateY(-5px);
+        .glass-panel-hover:hover {
             border-color: rgba(0, 242, 254, 0.4);
-            box-shadow: 0 12px 30px -10px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.25);
+            transform: translateY(-4px);
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .gradient-border {
-            position: relative;
-            background: linear-gradient(135deg, #00f2fe, #6366f1);
-            padding: 3px;
-            border-radius: 1.5rem;
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
         }
-        .gradient-border-inner {
-            background: #0d1322;
-            border-radius: calc(1.5rem - 3px);
-        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #070a12;
+            background: #080c14;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1f2937;
+            background: #1e293b;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -100,426 +89,656 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500 selection:text-black">
+<body class="relative antialiased selection:bg-cyan-500 selection:text-black">
 
-    <!-- Glowing Background Orbs -->
-    <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-[120px] pointer-events-none -z-10 animate-pulse-glow"></div>
-    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-[120px] pointer-events-none -z-10"></div>
+    <!-- Glowing Ambient Background Orbs -->
+    <div class="glow-orb w-96 h-96 bg-cyan-500 top-10 left-10"></div>
+    <div class="glow-orb w-[500px] h-[500px] bg-purple-600 top-[35%] -right-20"></div>
+    <div class="glow-orb w-80 h-80 bg-blue-500 bottom-10 left-1/3"></div>
 
-    <!-- Navigation Bar -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-80 bg-[#070a12]/80 border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center text-black font-extrabold text-lg shadow-lg group-hover:scale-105 transition-transform">
-                    KP
-                </div>
-                <span class="text-xl font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
-                    KRISH<span class="text-cyan-400">.PAL</span>
-                </span>
+    <!-- HEADER & NAVIGATION -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 sm:px-8 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-2xl px-6 py-3">
+            <a href="#hero" class="text-2xl font-bold font-heading tracking-wider flex items-center gap-2">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-black font-extrabold text-sm shadow-lg shadow-cyan-500/30">KP</span>
+                <span class="text-white">KRISH<span class="text-cyan-400">.PAL</span></span>
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-300">
                 <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
-                <a href="#portfolio" class="hover:text-cyan-400 transition-colors">Live Projects</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition-colors">Websites</a>
                 <a href="#ai-tools" class="hover:text-cyan-400 transition-colors">AI Tools</a>
-                <a href="#testimonials" class="hover:text-cyan-400 transition-colors">Client Reviews</a>
                 <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#contact" class="px-5 py-2.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-black font-semibold transition-all shadow-sm">
-                    Hire Me
+                <a href="#education" class="hover:text-cyan-400 transition-colors">Education</a>
+                <a href="https://wa.me/918080214878" target="_blank" class="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-semibold hover:opacity-90 transition-all shadow-md shadow-cyan-500/20 flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Let's Chat
                 </a>
             </nav>
 
-            <!-- Mobile Menu Toggle Button -->
-            <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="lg:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-2xl"></i>
             </button>
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-[#0c101c] border-b border-white/10 px-4 pt-4 pb-6 space-y-3">
-            <a href="#about" class="block text-gray-300 hover:text-cyan-400 py-1">About</a>
-            <a href="#portfolio" class="block text-gray-300 hover:text-cyan-400 py-1">Live Projects</a>
-            <a href="#ai-tools" class="block text-gray-300 hover:text-cyan-400 py-1">AI Tools</a>
-            <a href="#testimonials" class="block text-gray-300 hover:text-cyan-400 py-1">Client Reviews</a>
-            <a href="#skills" class="block text-gray-300 hover:text-cyan-400 py-1">Skills</a>
-            <a href="#contact" class="block text-center mt-3 py-2.5 rounded-lg bg-cyan-500 text-black font-semibold">Contact Me</a>
+        <div id="mobile-menu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-6 flex-col gap-3 text-center">
+            <a href="#about" class="mobile-nav-link text-slate-300 hover:text-cyan-400 py-1.5">About</a>
+            <a href="#experience" class="mobile-nav-link text-slate-300 hover:text-cyan-400 py-1.5">Experience</a>
+            <a href="#portfolio" class="mobile-nav-link text-slate-300 hover:text-cyan-400 py-1.5">Websites</a>
+            <a href="#ai-tools" class="mobile-nav-link text-slate-300 hover:text-cyan-400 py-1.5">AI Tools</a>
+            <a href="#skills" class="mobile-nav-link text-slate-300 hover:text-cyan-400 py-1.5">Skills</a>
+            <a href="#education" class="mobile-nav-link text-slate-300 hover:text-cyan-400 py-1.5">Education</a>
+            <a href="https://wa.me/918080214878" target="_blank" class="mobile-nav-link inline-flex justify-center items-center gap-2 mt-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-semibold">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 space-y-24">
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen pt-32 pb-16 px-4 sm:px-8 md:px-12 flex items-center relative z-10">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-cyan-500/30 text-cyan-400 text-xs md:text-sm font-semibold">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    Innovative WordPress & Web Developer
+                </div>
 
-        <!-- HERO SECTION -->
-        <section id="about" class="pt-6 md:pt-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-heading text-white leading-tight">
+                    Hi, I'm <span class="gradient-text">KRISH PAL</span>
+                </h1>
                 
-                <!-- Left Intro Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold tracking-wide uppercase">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                        Available for Full-time & Project Roles
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                        Hi, I'm <span class="text-gradient">Krish Pal</span>
-                        <br>
-                        <span class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-300">WordPress & AI Integration Developer</span>
-                    </h1>
+                <h2 class="text-xl sm:text-2xl font-medium text-slate-300 flex items-center gap-2">
+                    <span>Specializing in</span>
+                    <span id="typewriter" class="text-cyan-400 font-mono font-bold"></span>
+                    <span class="animate-pulse text-cyan-400 font-bold">|</span>
+                </h2>
 
-                    <p class="text-base sm:text-lg text-gray-400 max-w-2xl leading-relaxed mx-auto lg:mx-0">
-                        Innovative Developer known for high productivity and rapid turnaround. Specialized in custom theme development, plugin customization, landing pages, and cutting-edge AI integrations for US & Global clients.
-                    </p>
+                <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Innovative WordPress Developer known for high productivity and efficient task completion. Specialized in custom theme development, plugin customization, and website optimization. Skilled in Elementor, Divi, Avada, Bricks, and modern AI prompt engineering with ChatGPT, Gemini, and Claude.
+                </p>
 
-                    <!-- Contact & CTA Buttons -->
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="https://wa.me/918080214878" target="_blank" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-cyan-500/20">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                            Chat on WhatsApp
-                        </a>
-                        <a href="tel:8080214878" class="px-6 py-3.5 rounded-xl glass-card text-white font-medium hover:border-cyan-400/50 flex items-center gap-2 transition-all">
-                            <i class="fa-solid fa-phone text-cyan-400"></i>
-                            8080214878
-                        </a>
-                        <a href="#portfolio" class="px-6 py-3.5 rounded-xl glass-card text-gray-300 hover:text-white hover:border-cyan-400/50 transition-all">
-                            View Works
-                        </a>
+                <!-- Resume Details Chips -->
+                <div class="flex flex-wrap gap-3 pt-1 text-xs sm:text-sm text-slate-300">
+                    <a href="tel:8080214878" class="flex items-center gap-2 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-slate-800 hover:border-cyan-400/50 transition-colors">
+                        <i class="fa-solid fa-phone text-cyan-400"></i> 8080214878
+                    </a>
+                    <a href="mailto:palkrish382@gmail.com" class="flex items-center gap-2 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-slate-800 hover:border-cyan-400/50 transition-colors">
+                        <i class="fa-solid fa-envelope text-cyan-400"></i> palkrish382@gmail.com
+                    </a>
+                    <div class="flex items-center gap-2 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-slate-800">
+                        <i class="fa-solid fa-location-dot text-cyan-400"></i> Nallasopara, Palghar 401209
                     </div>
                 </div>
 
-                <!-- Right Profile Card with Picture -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="w-full max-w-sm gradient-border shadow-2xl">
-                        <div class="gradient-border-inner p-6 text-center space-y-6">
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="https://wa.me/918080214878" target="_blank" class="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-400 via-cyan-500 to-blue-600 text-black font-bold hover:scale-105 transition-all shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Contact Directly</span>
+                    </a>
+                    <a href="#portfolio" class="px-8 py-4 rounded-xl glass-panel text-white font-semibold hover:bg-slate-800/80 hover:border-cyan-400/40 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-cyan-400"></i>
+                        <span>View Live Websites</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Hero Card with User Image -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-sm sm:max-w-md">
+                    <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-tr from-cyan-400 via-blue-600 to-purple-600 blur-xl opacity-60 animate-pulse-slow"></div>
+                    
+                    <div class="relative glass-panel rounded-3xl p-6 border border-white/10 text-center space-y-5">
+                        
+                        <!-- Photo Frame -->
+                        <div class="relative w-48 h-56 mx-auto rounded-2xl overflow-hidden p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-2xl group">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNBg2Ulyf606K6cInh3iYJ8_hR8T2eB02Gz90hM6WvH7xG8yI1yJ9z400" 
+                                 alt="Krish Pal" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x500/0b0f19/00f2fe?text=Krish+Pal';"
+                                 class="w-full h-full object-cover object-top rounded-xl group-hover:scale-105 transition-transform duration-500">
                             
-                            <!-- Profile Picture Container -->
-                            <div class="relative w-48 h-56 mx-auto rounded-2xl overflow-hidden border-2 border-cyan-400/40 shadow-xl group">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNBg2Ulyf606K6cInh3iYJ8_hR8T2eB02Gz90hM6WvH7xG8yI1yJ9z400" 
-                                     alt="Krish Pal" 
-                                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';">
-                                
-                                <div class="absolute bottom-2 right-2 bg-emerald-500 text-black font-bold text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1 shadow-md">
-                                    <i class="fa-solid fa-circle-check"></i> US Client Ready
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Krish Pal</h3>
-                                <p class="text-sm text-cyan-400 font-medium mt-1">Senior Web & AI Integration Developer</p>
-                            </div>
-
-                            <div class="pt-2 border-t border-white/10 flex justify-center gap-3">
-                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
-                                    <i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> Verified Engineer
-                                </span>
-                            </div>
+                            <span class="absolute top-2 right-2 bg-slate-900/90 backdrop-blur-md text-cyan-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-cyan-400/30">
+                                <i class="fa-solid fa-circle-check text-emerald-400"></i> Verified
+                            </span>
                         </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-white font-heading">Krish Pal</h3>
+                            <p class="text-cyan-400 text-sm font-semibold mt-0.5">Web Developer / WordPress Developer</p>
+                        </div>
+
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
+                            <i class="fa-solid fa-shield-halved text-cyan-400"></i>
+                            <span>Certified Software Developer</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KEY ACHIEVEMENTS / PERFORMANCE HIGHLIGHTS -->
+    <section id="highlights" class="py-16 px-4 sm:px-8 md:px-12 relative z-10">
+        <div class="max-w-7xl mx-auto space-y-10">
+            
+            <div class="text-center space-y-2">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Execution Capabilities</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Key Productivity Highlights</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover border-l-4 border-l-cyan-400 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white font-heading">20 Pages / Day</h4>
+                    <h5 class="text-sm font-bold text-cyan-300">Rapid Page Builder Speed</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">Proven capability to design and launch up to 20 landing pages in a single day.</p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover border-l-4 border-l-purple-400 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white font-heading">100 Blogs / Day</h4>
+                    <h5 class="text-sm font-bold text-purple-300">Bulk Uploading Record</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">Record holder for uploading, formatting, and publishing 100 blog posts in 24 hours.</p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover border-l-4 border-l-blue-400 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-flag-usa"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white font-heading">US Client Expert</h4>
+                    <h5 class="text-sm font-bold text-blue-300">Live Changes & Communication</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">Adept at understanding US clients, implementing live updates, and handling real-time project feedback.</p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover border-l-4 border-l-emerald-400 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white font-heading">Prompt Master</h4>
+                    <h5 class="text-sm font-bold text-emerald-300">ChatGPT, Gemini & Claude</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">Aware of modern AI tools and leverages advanced prompts for custom web logic and calculators.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE (From Original Resume) -->
+    <section id="experience" class="py-20 px-4 sm:px-8 md:px-12 relative z-10 bg-slate-950/40">
+        <div class="max-w-7xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Career History</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Work Experience</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+
+                <!-- Job 1 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 glass-panel-hover border-l-4 border-l-cyan-400 flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">06/2023 - Current</span>
+                        <h4 class="text-2xl font-bold text-white">WordPress Developer</h4>
+                        <p class="text-sm font-semibold text-cyan-300">The Ocean Marketing <span class="text-slate-400 font-normal">| Virar, India</span></p>
+                        <p class="text-xs text-slate-400 leading-relaxed pt-2">Custom theme development, plugin customization, website optimization, elementor/divi site builds, and client communication.</p>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 glass-panel-hover border-l-4 border-l-blue-400 flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">01/2023 - 05/2023</span>
+                        <h4 class="text-2xl font-bold text-white">Web Designer</h4>
+                        <p class="text-sm font-semibold text-blue-300">My Country Mobile <span class="text-slate-400 font-normal">| Andheri, India</span></p>
+                        <p class="text-xs text-slate-400 leading-relaxed pt-2">Designing clean, responsive UI layouts, Bootstrap frontend integration, and website performance enhancements.</p>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 glass-panel-hover border-l-4 border-l-purple-400 flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">07/2022 - 12/2022</span>
+                        <h4 class="text-2xl font-bold text-white">Front End Web Developer Intern</h4>
+                        <p class="text-sm font-semibold text-purple-300">Aspiring Media Tech <span class="text-slate-400 font-normal">| Vasai, India</span></p>
+                        <p class="text-xs text-slate-400 leading-relaxed pt-2">Frontend HTML/CSS coding, responsive layout fixing, Photoshop banner designs, and supporting live web maintenance.</p>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- HIGHLIGHTED LIVE WEBSITES PORTFOLIO -->
-        <section id="portfolio" class="space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <h2 class="text-3xl font-extrabold text-white">Live Client Projects</h2>
-                    <p class="text-gray-400 mt-2">Real websites built and optimized for clients across US & India.</p>
-                </div>
-                <div class="inline-flex px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-cyan-400 font-bold text-sm">
-                    20+ Custom Landing Pages Created
-                </div>
+    <!-- LIVE WEBSITES CREATED -->
+    <section id="portfolio" class="py-20 px-4 sm:px-8 md:px-12 relative z-10">
+        <div class="max-w-7xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Portfolio Showcase</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Live Client Websites Created</h3>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto">Selected live websites built and optimized across non-profits, industrial manufacturing, US services, healthcare, and corporate platforms.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
             </div>
 
             <!-- Websites Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Card 1 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Non-Profit</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">deepjyotfoundation.ngo</h3>
-                        <p class="text-gray-400 text-sm">Full NGO website structure with online support setup.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">NGO & Social</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Deepjyot Foundation</h4>
+                        <p class="text-xs text-cyan-400 font-mono">deepjyotfoundation.ngo</p>
                     </div>
-                    <a href="https://deepjyotfoundation.ngo" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                    <a href="https://deepjyotfoundation.ngo" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-black font-semibold text-xs text-slate-200 transition-all flex items-center justify-center gap-2 border border-slate-700">
+                        <span>Visit Live Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Industrial</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">stwscrewbarrel.com</h3>
-                        <p class="text-gray-400 text-sm">Industrial product display catalog website.</p>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Manufacturing</span>
+                        <h4 class="text-xl font-bold text-white mt-1">STW Screw & Barrel</h4>
+                        <p class="text-xs text-cyan-400 font-mono">stwscrewbarrel.com</p>
                     </div>
-                    <a href="https://stwscrewbarrel.com" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                    <a href="https://stwscrewbarrel.com" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-black font-semibold text-xs text-slate-200 transition-all flex items-center justify-center gap-2 border border-slate-700">
+                        <span>Visit Live Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Recycling</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">alphapetwaste.com</h3>
-                        <p class="text-gray-400 text-sm">Waste management and sustainability portal.</p>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">US Services</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Mold B Gone GA</h4>
+                        <p class="text-xs text-cyan-400 font-mono">moldbgonega.com</p>
                     </div>
-                    <a href="https://alphapetwaste.com" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                    <a href="https://moldbgonega.com" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-black font-semibold text-xs text-slate-200 transition-all flex items-center justify-center gap-2 border border-slate-700">
+                        <span>Visit Live Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Corporate</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">allsolution.in</h3>
-                        <p class="text-gray-400 text-sm">Multi-service provider platform with clean UX.</p>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">Landscape Design</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Outside Landscape Group</h4>
+                        <p class="text-xs text-cyan-400 font-mono">outsidelandscapegroup.com</p>
                     </div>
-                    <a href="https://allsolution.in" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                    <a href="https://outsidelandscapegroup.com" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-black font-semibold text-xs text-slate-200 transition-all flex items-center justify-center gap-2 border border-slate-700">
+                        <span>Visit Live Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">US Service</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">moldbgonega.com</h3>
-                        <p class="text-gray-400 text-sm">US Home remediation services website built for conversions.</p>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">IT Services</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Integricom</h4>
+                        <p class="text-xs text-cyan-400 font-mono">integricom.net</p>
                     </div>
-                    <a href="https://moldbgonega.com" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                    <a href="https://integricom.net" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-black font-semibold text-xs text-slate-200 transition-all flex items-center justify-center gap-2 border border-slate-700">
+                        <span>Visit Live Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
 
-                <!-- Card 6 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Tech & R&D</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">plexusrd.com</h3>
-                        <p class="text-gray-400 text-sm">Modern corporate website for research and technology.</p>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">US Directory</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Service Patriots</h4>
+                        <p class="text-xs text-cyan-400 font-mono">servicepatriots.com</p>
                     </div>
-                    <a href="https://plexusrd.com" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                    <a href="https://servicepatriots.com" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-black font-semibold text-xs text-slate-200 transition-all flex items-center justify-center gap-2 border border-slate-700">
+                        <span>Visit Live Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
                 </div>
 
-                <!-- Card 7 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Healthcare</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">demigodrx.com</h3>
-                        <p class="text-gray-400 text-sm">Medical & pharma responsive landing platform.</p>
-                    </div>
-                    <a href="https://demigodrx.com" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-3">
+                    <h5 class="text-lg font-bold text-white">Alpha Pet Waste</h5>
+                    <p class="text-xs text-cyan-400 font-mono">alphapetwaste.com</p>
+                    <a href="https://alphapetwaste.com" target="_blank" class="text-xs text-cyan-400 hover:underline inline-block pt-1">Visit Site →</a>
                 </div>
 
-                <!-- Card 8 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">IT Solutions</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">integricom.net</h3>
-                        <p class="text-gray-400 text-sm">IT infrastructure and communications company site.</p>
-                    </div>
-                    <a href="https://integricom.net" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-3">
+                    <h5 class="text-lg font-bold text-white">All Solution</h5>
+                    <p class="text-xs text-cyan-400 font-mono">allsolution.in</p>
+                    <a href="https://allsolution.in" target="_blank" class="text-xs text-cyan-400 hover:underline inline-block pt-1">Visit Site →</a>
                 </div>
 
-                <!-- Card 9 -->
-                <div class="glass-card glass-card-hover p-6 rounded-2xl space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">US Services</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 text-sm"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">outsidelandscapegroup.com</h3>
-                        <p class="text-gray-400 text-sm">Landscape architecture and outdoor design business.</p>
-                    </div>
-                    <a href="https://outsidelandscapegroup.com" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black font-semibold text-sm transition-all border border-white/10">Visit Website</a>
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-3">
+                    <h5 class="text-lg font-bold text-white">911 Floods R Us</h5>
+                    <p class="text-xs text-cyan-400 font-mono">911floodsrus.com</p>
+                    <a href="https://911floodsrus.com" target="_blank" class="text-xs text-cyan-400 hover:underline inline-block pt-1">Visit Site →</a>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-3">
+                    <h5 class="text-lg font-bold text-white">Demigod RX</h5>
+                    <p class="text-xs text-cyan-400 font-mono">demigodrx.com</p>
+                    <a href="https://demigodrx.com" target="_blank" class="text-xs text-cyan-400 hover:underline inline-block pt-1">Visit Site →</a>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-3">
+                    <h5 class="text-lg font-bold text-white">Pure Home US</h5>
+                    <p class="text-xs text-cyan-400 font-mono">purehomeus.com</p>
+                    <a href="https://purehomeus.com" target="_blank" class="text-xs text-cyan-400 hover:underline inline-block pt-1">Visit Site →</a>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 glass-panel-hover space-y-3">
+                    <h5 class="text-lg font-bold text-white">Plexus RD</h5>
+                    <p class="text-xs text-cyan-400 font-mono">plexusrd.com</p>
+                    <a href="https://plexusrd.com" target="_blank" class="text-xs text-cyan-400 hover:underline inline-block pt-1">Visit Site →</a>
                 </div>
 
             </div>
+
+            <div class="glass-panel rounded-3xl p-6 text-center border border-cyan-500/30">
+                <p class="text-sm font-semibold text-slate-300">
+                    <i class="fa-solid fa-layer-group text-cyan-400 mr-2"></i> Created <span class="text-cyan-400 font-bold">20+ Landing Pages</span> for ad campaigns and custom landing solutions.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- AI TOOLS BUILT SECTION -->
+    <section id="ai-tools" class="py-20 px-4 sm:px-8 md:px-12 relative z-10 bg-slate-950/40">
+        <div class="max-w-7xl mx-auto space-y-12">
             
-            <div class="text-center pt-4">
-                <span class="text-gray-400 text-sm">Other live projects include: <strong class="text-white">purehomeus.com</strong>, <strong class="text-white">911floodsrus.com</strong>, <strong class="text-white">servicepatriots.com</strong> & more.</span>
-            </div>
-        </section>
-
-        <!-- AI INTEGRATED TOOLS SHOWCASE -->
-        <section id="ai-tools" class="space-y-8">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-wider">
-                    <i class="fa-solid fa-robot"></i> Advanced AI Applications
-                </div>
-                <h2 class="text-3xl font-extrabold text-white">Custom Built AI Tools</h2>
-                <p class="text-gray-400">Innovative interactive web web-tools created using modern AI frameworks & prompt engineering.</p>
+            <div class="text-center space-y-3">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Web Applications</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">AI Powered Web Tools Created</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- AI Tool 1 -->
-                <div class="glass-card glass-card-hover p-8 rounded-3xl border border-indigo-500/20 space-y-6 relative overflow-hidden">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-2xl text-white shadow-lg">
-                        <i class="fa-solid fa-calendar-check"></i>
+                
+                <div class="glass-panel rounded-3xl p-8 glass-panel-hover border border-cyan-500/30 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 to-blue-600 text-black flex items-center justify-center text-2xl font-bold shadow-lg shadow-cyan-500/20">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">AI Powered Tool</span>
+                            <h4 class="text-2xl font-bold text-white mt-1">Service Day Tool</h4>
+                            <p class="text-xs text-cyan-300 font-mono">redoaksanitation.com/woodstock-residents/</p>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Created an automated service day lookup tool using AI logic for Woodstock residents to calculate their schedule seamlessly.
+                        </p>
                     </div>
-                    <div class="space-y-2">
-                        <h3 class="text-2xl font-bold text-white">AI Service Day Tool</h3>
-                        <p class="text-gray-300">Automated schedule & service day calculator application engineered with AI to streamline neighborhood sanitation booking.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                        <span class="text-xs text-indigo-400 font-mono">redoaksanitation.com</span>
-                        <a href="https://redoaksanitation.com/woodstock-residents/" target="_blank" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-semibold text-sm transition-all shadow-md">
-                            Live Tool <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
+                    <a href="https://redoaksanitation.com/woodstock-residents/" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold text-sm text-center hover:opacity-90 transition-all">
+                        Open Service Day Tool <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                    </a>
                 </div>
 
-                <!-- AI Tool 2 -->
-                <div class="glass-card glass-card-hover p-8 rounded-3xl border border-cyan-500/20 space-y-6 relative overflow-hidden">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-2xl text-black shadow-lg">
-                        <i class="fa-solid fa-calculator"></i>
+                <div class="glass-panel rounded-3xl p-8 glass-panel-hover border border-purple-500/30 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 text-black flex items-center justify-center text-2xl font-bold shadow-lg shadow-purple-500/20">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">AI Estimator</span>
+                            <h4 class="text-2xl font-bold text-white mt-1">Cost Calculator Tool</h4>
+                            <p class="text-xs text-purple-300 font-mono">jettbt.com</p>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Created a custom interactive cost calculator leveraging AI algorithms to deliver instant dynamic service pricing.
+                        </p>
                     </div>
-                    <div class="space-y-2">
-                        <h3 class="text-2xl font-bold text-white">AI Instant Cost Calculator</h3>
-                        <p class="text-gray-300">Intelligent dynamic estimation & quote generating engine built using AI prompt logic for quick client quotes.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                        <span class="text-xs text-cyan-400 font-mono">jettbt.com</span>
-                        <a href="https://jettbt.com" target="_blank" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold text-sm transition-all shadow-md">
-                            Live Tool <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
+                    <a href="https://jettbt.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-black font-bold text-sm text-center hover:opacity-90 transition-all">
+                        Open Cost Calculator <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                    </a>
                 </div>
+
             </div>
-        </section>
 
-        <!-- CLIENT APPRECIATIONS & TESTIMONIALS -->
-        <section id="testimonials" class="space-y-8">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                    <i class="fa-solid fa-star"></i> Client Satisfaction
-                </div>
-                <h2 class="text-3xl font-extrabold text-white">Client Appreciations</h2>
-                <p class="text-gray-400">Direct feedback from international partners and SEO strategists.</p>
+        </div>
+    </section>
+
+    <!-- CLIENT APPRECIATIONS -->
+    <section id="testimonials" class="py-20 px-4 sm:px-8 md:px-12 relative z-10">
+        <div class="max-w-7xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Feedback</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Client Appreciation</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
             </div>
 
             <div class="max-w-3xl mx-auto">
-                <div class="glass-card p-8 sm:p-10 rounded-3xl border border-emerald-500/30 relative shadow-2xl">
-                    <div class="text-emerald-400 text-4xl mb-4"><i class="fa-solid fa-quote-left"></i></div>
-                    <p class="text-lg sm:text-xl text-gray-200 font-medium leading-relaxed italic">
-                        "This looks absolutely <span class="text-cyan-400 font-bold not-italic">AMAZING!!!!</span> wow wow wow I just love it - sharing with client. I know they will love it too. So so impressive thank you!"
-                    </p>
-                    <div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+                <div class="glass-panel rounded-3xl p-8 glass-panel-hover border-l-4 border-l-cyan-400 space-y-6 relative">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 text-black flex items-center justify-center font-bold text-lg">
+                            CJ
+                        </div>
                         <div>
                             <h4 class="text-lg font-bold text-white">Carly J</h4>
-                            <p class="text-xs text-gray-400">SEO Guru / US Client Partner</p>
+                            <p class="text-xs text-cyan-400 font-semibold">Client Feedback</p>
                         </div>
-                        <div class="flex text-amber-400 text-sm gap-1">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
+                    </div>
+
+                    <blockquote class="text-slate-200 text-base md:text-xl italic leading-relaxed font-light">
+                        "this looks absolutely AMAZING!!!! wow wow wow I just love it -sharing with client. I know they will love it too. so so impressive thank you"
+                    </blockquote>
+
+                    <div class="flex items-center gap-1 text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- TECHNICAL SKILLS & AI TOOLKIT -->
-        <section id="skills" class="space-y-8">
-            <h2 class="text-3xl font-extrabold text-white">Skills & Toolkit</h2>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION (Strictly from Resume + Requested AI additions) -->
+    <section id="skills" class="py-20 px-4 sm:px-8 md:px-12 relative z-10 bg-slate-950/40">
+        <div class="max-w-7xl mx-auto space-y-12">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="text-lg font-bold text-cyan-400 flex items-center gap-2">
-                        <i class="fa-solid fa-brain"></i> AI & Prompt Engineering
-                    </h3>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i> ChatGPT & GPT-4o Master</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i> Claude AI Development</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i> Google Gemini Pro Workflows</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i> AI Tool & Calculator Integration</li>
-                    </ul>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
-                        <i class="fa-brands fa-wordpress"></i> WordPress & Builders
-                    </h3>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-xs"></i> Elementor & Divi Customization</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-xs"></i> Bricks Builder & Avada</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-xs"></i> Custom Theme Architectures</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-xs"></i> Speed & SEO Optimization</li>
-                    </ul>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="text-lg font-bold text-purple-400 flex items-center gap-2">
-                        <i class="fa-solid fa-code"></i> Frontend & Core Skills
-                    </h3>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i> HTML5, CSS3, JavaScript</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i> Bootstrap & Tailwind CSS</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i> Photoshop & Graphic Assets</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i> US Client Live Change Handling</li>
-                    </ul>
-                </div>
+            <div class="text-center space-y-3">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Capabilities</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Skills & Knowledge</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
             </div>
-        </section>
 
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="pt-8">
-            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-cyan-500/20 text-center space-y-6">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Work Together</h2>
-                <p class="text-gray-300 max-w-xl mx-auto">Need a high-converting website, WordPress custom design, or AI web application? Get in touch today!</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="flex flex-wrap items-center justify-center gap-6 pt-4">
-                    <a href="tel:8080214878" class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-white font-semibold flex items-center gap-3 transition-all">
-                        <i class="fa-solid fa-phone text-cyan-400"></i> +91 8080214878
-                    </a>
-                    <a href="mailto:palkrish382@gmail.com" class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-white font-semibold flex items-center gap-3 transition-all">
-                        <i class="fa-solid fa-envelope text-cyan-400"></i> palkrish382@gmail.com
-                    </a>
-                    <a href="https://wa.me/918080214878" target="_blank" class="px-6 py-3 rounded-xl bg-cyan-500 text-black font-bold flex items-center gap-3 hover:bg-cyan-400 transition-all">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Direct WhatsApp
-                    </a>
+                <!-- Hard Skills -->
+                <div class="glass-panel rounded-3xl p-6 glass-panel-hover space-y-4">
+                    <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-code text-cyan-400"></i> Hard Skills
+                    </h4>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">HTML</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">CSS</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">BOOTSTRAP</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">WORDPRESS</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">ELEMENTOR</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">DIVI</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">AVADA</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">BRICKS</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700">PHOTOSHOP</span>
+                    </div>
                 </div>
+
+                <!-- Process & Soft Skills -->
+                <div class="glass-panel rounded-3xl p-6 glass-panel-hover space-y-4">
+                    <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-user-check text-blue-400"></i> Process & Soft Skills
+                    </h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Process Knowledge</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Product Knowledge</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Computer Skills</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Situation Handling</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Multi Tasking</li>
+                    </ul>
+                </div>
+
+                <!-- AI Tools -->
+                <div class="glass-panel rounded-3xl p-6 glass-panel-hover space-y-4">
+                    <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-brain text-purple-400"></i> AI Tools & Prompting
+                    </h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> ChatGPT</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Google Gemini</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Claude AI</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Prompt Mastery</li>
+                    </ul>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- EDUCATION & CERTIFICATIONS & LANGUAGES (Strictly from Resume) -->
+    <section id="education" class="py-20 px-4 sm:px-8 md:px-12 relative z-10">
+        <div class="max-w-7xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3">
+                <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Background</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Education, Languages & Interests</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+            </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/10 py-8 text-center text-sm text-gray-500">
-        <p>© 2026 Krish Pal. All rights reserved.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Education -->
+                <div class="glass-panel rounded-3xl p-6 glass-panel-hover space-y-4">
+                    <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-cyan-400"></i> Education & Training
+                    </h4>
+                    <div class="space-y-4 text-xs">
+                        <div>
+                            <p class="font-bold text-white text-sm">Bachelor: Science (GPA: 82)</p>
+                            <p class="text-slate-400">VIVA Institute of Technology (01/2023)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm">Higher Secondary Certificate (Commerce/Science)</p>
+                            <p class="text-slate-400">Vidya Varidhi Jr College of Arts (01/2020)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm">DIPLOMA IN SOFTWARE ENGINEER</p>
+                            <p class="text-slate-400">(01/2019)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm">Secondary Certificate</p>
+                            <p class="text-slate-400">Morning Star English High School (01/2018)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification & Languages -->
+                <div class="glass-panel rounded-3xl p-6 glass-panel-hover space-y-6">
+                    <div>
+                        <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-award text-blue-400"></i> Certifications
+                        </h4>
+                        <p class="text-xs font-bold text-cyan-400 pt-3">CERTIFIED SOFTWARE DEVELOPER</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-language text-purple-400"></i> Languages
+                        </h4>
+                        <div class="space-y-2 text-xs pt-3 text-slate-300">
+                            <div class="flex justify-between"><span>Hindi</span><span class="text-slate-400">Native</span></div>
+                            <div class="flex justify-between"><span>Marathi</span><span class="text-slate-400">Native</span></div>
+                            <div class="flex justify-between"><span>English</span><span class="text-cyan-400 font-bold">Advanced (C1)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobbies & Interests -->
+                <div class="glass-panel rounded-3xl p-6 glass-panel-hover space-y-4">
+                    <h4 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-rose-400"></i> Hobbies & Interests
+                    </h4>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium pt-1">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-plane mr-1 text-cyan-400"></i> Travelling</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-music mr-1 text-cyan-400"></i> Music</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-palette mr-1 text-cyan-400"></i> Drawing</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-gamepad mr-1 text-cyan-400"></i> Gaming</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-film mr-1 text-cyan-400"></i> Animation</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-utensils mr-1 text-cyan-400"></i> Cooking</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-slate-800/80 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© <span id="year"></span> Krish Pal. All rights reserved.</p>
+            <p class="flex items-center gap-1">
+                Web Developer & <span class="text-cyan-400 font-semibold">WordPress Developer</span>
+            </p>
+        </div>
     </footer>
 
-    <!-- Mobile Navigation Toggle Script -->
+    <!-- INTERACTIVE SCRIPTS -->
     <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        mobileMenuBtn.addEventListener('click', () => {
+        // Typewriter Effect
+        const phrases = ["WordPress Developer", "Web Developer", "Elementor & Divi Specialist", "Prompt Engineering Master"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById("typewriter");
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 90;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        // Mobile Navbar Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
         });
     </script>
 </body>
